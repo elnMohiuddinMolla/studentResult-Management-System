@@ -1,0 +1,281 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap");
+
+:root {
+  --primary-bg: rgba(255, 255, 255, 0.95);
+  --secondary-bg: #1a202c;
+  --accent-color: #2563eb;
+  --pass-color: #16a34a;
+  --fail-color: #dc2626;
+  --border-color: #cbd5e1;
+  --danger: #ef4444;
+  --font-family: 'Poppins', Arial, Helvetica, sans-serif;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: var(--font-family);
+}
+
+body, html {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  font-size: 16px;
+}
+
+/* ===== BACKGROUND ===== */
+.background {
+  flex-grow: 1;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  padding: 3rem 2rem;
+  background-image: url("sResult.jpg"); /* Your background image */
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  position: relative;
+}
+
+.background::before {
+  content: "";
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  background-color: rgba(0,0,0,0.4); /* dark overlay for readability */
+  z-index: 0;
+}
+
+/* ===== CARD (forms and tables) ===== */
+.card {
+  position: relative;
+  z-index: 1;
+  background-color: var(--primary-bg);
+  border-radius: 12px;
+  box-shadow: 0 12px 28px rgba(0,0,0,0.15);
+  padding: 3rem 3rem;
+  width: 90%;
+  max-width: 950px;
+  max-height: 85vh;
+  overflow-y: auto;
+}
+
+/* ===== HEADER ===== */
+.header {
+  background-color: var(--secondary-bg);
+  color: white;
+  padding: 1.2rem 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 1rem;
+  z-index: 2;
+  position: relative;
+}
+
+.header h2 {
+  font-weight: 700;
+  font-size: 1.8rem;
+}
+
+nav a {
+  color: white;
+  text-decoration: none;
+  margin-left: 1.5rem;
+  font-weight: 600;
+  padding-bottom: 0.3rem;
+  border-bottom: 3px solid transparent;
+  transition: border-color 0.3s ease;
+  cursor: pointer;
+}
+
+nav a.active-tab {
+  border-color: #fff;
+  font-weight: 700;
+}
+
+/* ===== FORMS ===== */
+.form-group {
+  margin-bottom: 1.8rem;
+  display: flex;
+  flex-direction: column;
+}
+
+.form-group label {
+  margin-bottom: 0.6rem;
+  font-weight: 600;
+  color: var(--secondary-bg);
+}
+
+.form-group input {
+  padding: 0.75rem 1.2rem;
+  font-size: 1rem;
+  border-radius: 6px;
+  border: 2px solid var(--border-color);
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.form-group input:focus {
+  outline: none;
+  border-color: var(--accent-color);
+  box-shadow: 0 0 8px var(--accent-color);
+}
+
+/* ===== BUTTONS ===== */
+.btn {
+  background-color: var(--accent-color);
+  color: white;
+  padding: 0.85rem 2.2rem;
+  font-size: 1.1rem;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: background-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.btn:hover {
+  background-color: #1d4ed8;
+  box-shadow: 0 4px 12px rgba(37,99,235,0.5);
+}
+
+/* ===== TABLE ===== */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 1rem;
+  margin-top: 2rem;
+  text-align: center;
+}
+
+th, td {
+  padding: 1rem 0.7rem;
+  border-bottom: 1.5px solid var(--border-color);
+}
+
+th {
+  background-color: #f1f5f9;
+  font-weight: 700;
+  position: sticky;
+  top: 0;
+  z-index: 1;
+}
+
+/* ===== DELETE BUTTON ===== */
+.delete-btn {
+  background: var(--danger);
+  border: none;
+  color: white;
+  padding: 0.4rem 1rem;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 1rem;
+}
+
+.delete-btn:hover {
+  background: #b91c1c;
+}
+
+/* ===== STUDENT RESULT BOX (PROFESSIONAL CARD) ===== */
+.result-box {
+  margin-top: 2rem;
+  padding: 2rem;
+  border-radius: 12px;
+  min-height: 150px;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.1);
+  display: none;
+  line-height: 1.5;
+  background-color: var(--primary-bg);
+  border-left: 8px solid var(--accent-color);
+  transition: all 0.3s ease;
+}
+
+.result-box.show.pass {
+  display: block;
+  border-left: 8px solid var(--pass-color);
+  background-color: #f0fdf4;
+  color: var(--pass-color);
+}
+
+.result-box.show.fail {
+  display: block;
+  border-left: 8px solid var(--fail-color);
+  background-color: #fef2f2;
+  color: var(--fail-color);
+}
+
+/* Individual subjects layout inside result */
+.result-box .subject-grades {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+.result-box .subject-grades div {
+  background-color: rgba(255,255,255,0.8);
+  padding: 0.8rem 1rem;
+  border-radius: 8px;
+  font-weight: 600;
+  text-align: center;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+}
+
+.result-box .cgpa {
+  margin-top: 1.5rem;
+  font-size: 1.2rem;
+  font-weight: 700;
+}
+
+.result-box .status {
+  margin-top: 0.8rem;
+  font-size: 1.3rem;
+  font-weight: 700;
+}
+
+/* ===== FOOTER ===== */
+.footer {
+  background-color: var(--secondary-bg);
+  color: white;
+  text-align: center;
+  padding: 1.2rem 2rem;
+  font-size: 1rem;
+  font-weight: 400;
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 600px) {
+  .card {
+    padding: 2rem 1.5rem;
+  }
+
+  table, th, td {
+    font-size: 0.9rem;
+  }
+
+  .form-group input {
+    font-size: 1rem;
+  }
+
+  .btn {
+    font-size: 1rem;
+    padding: 0.75rem 1.8rem;
+  }
+
+  .header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  nav a {
+    margin-left: 0;
+    margin-right: 1.2rem;
+  }
+
+  .result-box .subject-grades {
+    grid-template-columns: 1fr 1fr;
+  }
+}

@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Result Management System</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header class="header">
+  <h2>Result Management System</h2>
+  <nav>
+    <a href="#" id="tabAdminBtn" class="active-tab">Admin Panel</a>
+    <a href="#" id="tabStudentBtn">Student Panel</a>
+  </nav>
+</header>
+
+<main class="background">
+  <div class="card">
+
+    <!-- Admin Login Panel -->
+    <section id="adminLoginPanel">
+      <h1>Admin Login</h1>
+      <form id="adminLoginForm">
+        <div class="form-group">
+          <label for="adminUsername">Username</label>
+          <input type="text" id="adminUsername" placeholder="Enter Username" required>
+        </div>
+        <div class="form-group">
+          <label for="adminPassword">Password</label>
+          <input type="password" id="adminPassword" placeholder="Enter Password" required>
+        </div>
+        <button type="submit" class="btn">Login</button>
+      </form>
+    </section>
+
+    <!-- Admin Panel -->
+    <section id="adminPanel" style="display:none;">
+      <h1>Admin Panel - Add Student Result</h1>
+      <form id="adminForm">
+        <div class="form-group">
+          <label for="rollAdmin">Roll Number</label>
+          <input type="text" id="rollAdmin" placeholder="Enter Roll Number" required>
+        </div>
+        <div class="form-group">
+          <label for="nameAdmin">Student Name</label>
+          <input type="text" id="nameAdmin" placeholder="Enter Student Name" required>
+        </div>
+        <div class="form-group">
+          <label>DSA Marks</label>
+          <input type="number" id="dsa" min="0" max="100" required>
+        </div>
+        <div class="form-group">
+          <label>OOP Marks</label>
+          <input type="number" id="oop" min="0" max="100" required>
+        </div>
+        <div class="form-group">
+          <label>EEE Marks</label>
+          <input type="number" id="eee" min="0" max="100" required>
+        </div>
+        <div class="form-group">
+          <label>PULSE Technique Marks</label>
+          <input type="number" id="pulse" min="0" max="100" required>
+        </div>
+        <button type="submit" class="btn">Add / Update Result</button>
+      </form>
+
+      <h2>All Students Results</h2>
+      <table>
+        <thead>
+          <tr>
+            <th>Roll</th>
+            <th>Name</th>
+            <th>DSA</th>
+            <th>OOP</th>
+            <th>EEE</th>
+            <th>PULSE</th>
+            <th>CGPA</th>
+            <th>Status</th>
+            <th>Action</th>
+          </tr>
+        </thead>
+        <tbody id="adminHistory"></tbody>
+      </table>
+      <button id="logoutBtn" class="btn" style="margin-top:1rem;background:#ef4444;">Logout</button>
+    </section>
+
+    <!-- Student Panel -->
+    <section id="studentPanel" style="display:none;">
+      <h1>Student Panel - Search Result</h1>
+      <form id="studentForm">
+        <div class="form-group">
+          <label for="rollStudent">Enter Roll Number</label>
+          <input type="text" id="rollStudent" placeholder="Enter Roll Number" required>
+        </div>
+        <button type="submit" class="btn">Search Result</button>
+      </form>
+      <div id="studentResult" class="result-box"></div>
+    </section>
+
+  </div>
+</main>
+
+<footer class="footer">
+  <p>© 2026 Result Management System | Developed by Student</p>
+</footer>
+
+<script src="index.js"></script>
+</body>
+</html>
